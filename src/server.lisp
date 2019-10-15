@@ -14,7 +14,7 @@
 
 (setf *js-string-delimiter* #\")
 
-(define-easy-handler (repl :uri "/repl") ()
+(define-easy-handler (repl :uri "/repl") ()g
   (with-html-output-to-string (s)
     (:html
      (:title "AM Dev Test Site")
@@ -43,6 +43,38 @@
 (defun-ajax echo (data) (*ajax-processor* :callback-data :response-text)
   (concatenate 'string "echo: " data))
 
+(defvar tundra-js-files
+  (list
+   "tundra-client.js"
+   "tundra-util.js"
+   "environ.js"
+   "primitives.js"
+   "webgl-utils.js"
+   "gl-matrix.js"            
+   "m4.js"))
+
+(defvar tundra-css-files
+  (list
+   "tundra.css"))
+
+
 (setq *dispatch-table* (list 'dispatch-easy-handlers
 			     (create-ajax-dispatcher *ajax-processor*)))
 
+(mapcar 
+ (lambda (js-script)
+   (push
+    (hunchentoot:create-static-file-dispatcher-and-handler
+     (concatenate 'string "/" js-script)
+     (concatenate 'string (sb-posix:getcwd) "/js/" js-script))
+    hunchentoot::*dispatch-table*))
+ tundra-js-files)
+
+(mapcar 
+ (lambda (css-script)
+   (push
+    (hunchentoot:create-static-file-dispatcher-and-handler
+     (concatenate 'string "/" css-script)
+     (concatenate 'string (sb-posix:getcwd) "/css/" css-script))
+    hunchentoot::*dispatch-table*))
+ tundra-css-files)
