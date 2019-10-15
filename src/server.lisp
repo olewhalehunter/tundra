@@ -14,11 +14,20 @@
 
 (setf *js-string-delimiter* #\")
 
-(define-easy-handler (repl :uri "/repl") ()g
+(define-easy-handler (repl :uri "/repl") ()
   (with-html-output-to-string (s)
     (:html
-     (:title "AM Dev Test Site")
+     (:head 
+      (:meta :http-equiv "Content-Type" 
+                      :content "text/html;charset=utf-8")
+      (:title "AM Tundra")
+
+      (:link :type "text/css" 
+	     :rel "stylesheet"
+	     :href "/tundra.css"))     
+
      (str (generate-prologue *ajax-processor*))
+     (:script :type "text/css" :source "css/tundra.css")
      (:script :type "text/javascript"
 	      (str
 	       (ps
@@ -35,7 +44,7 @@
      (:p
       (:button :type "button"
 	       :onclick (ps-inline (on-click))
-	       "Submit!")))))
+	       "Print")))))
 
 (defparameter *ajax-processor*
   (make-instance 'ajax-processor :server-uri "/repl-api"))

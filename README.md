@@ -2,9 +2,9 @@
 
 digital arts tooling
 
-* put webgl environ.js into JT client
-** copy environ.js et al into server.lisp call
-
+* read James's code
+* webgl window in server.lisp
+* toggle see coord plane
 * tree newSlab() manual entry, slabStr
 * demo render
 * design and capture images upload to /portfolio
