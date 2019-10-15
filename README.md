@@ -2,8 +2,6 @@
 
 digital arts tooling
 
-* read James's code
-* webgl window in server.lisp
 * toggle see coord plane
 * tree newSlab() manual entry, slabStr
 * demo render
