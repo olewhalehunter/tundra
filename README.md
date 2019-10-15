@@ -3,6 +3,8 @@
 digital arts tooling
 
 * put webgl environ.js into JT client
+** copy environ.js et al into server.lisp call
+
 * tree newSlab() manual entry, slabStr
 * demo render
 * design and capture images upload to /portfolio
