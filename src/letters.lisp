@@ -1,4 +1,6 @@
 
+;; Lettering library called from (load "png-calligraph.lisp")
+
 (defun ctavset () (setq corner-y cur-ctav-h))
 
 (defun ctrok-letter (letter)
