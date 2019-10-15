@@ -8,4 +8,4 @@ digital arts tooling.
 *** tree newSlab() manual entry, slabStr
 
 * design and capture images upload to /portfolio
-* src cleanup and doc
+* better src documentation

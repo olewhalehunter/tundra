@@ -36,15 +36,19 @@
 
 (defun c3 ()
   (corner-last 'CWNG-0)
-  (cida-ctrok ro (+ (- ft ro) r))
+  (block-radius-length ro (+ (- ft ro) r))
   (^ ro)
-  (t-cwng fd ro) (V ro)) ;; truncated bars
+  (block-radius-height fd ro) 
+  (V ro)) ;; truncated bars
 
 (defun c4 (&optional k)
   (corner-last 'CTAV-0)  
-  (<- ro) (cwng-z fd)
-  (t-cwng ro fd) (-> ro)
-  (cida-ctrok ro (+ (- ft ro) r))
+;; "cwng-z" : "lower-serif-radius"
+  (<- ro) 
+;; translated "cwng-z" to "lower-serif-radius" ?
+  (lower-serif-radius fd)
+  (block-radius-height ro fd) (-> ro)
+  (block-radius-length ro (+ (- ft ro) r))
   (^ ro2)
   (save-point 'CTAV-END))
 
@@ -63,12 +67,12 @@
 
 (defun c2 (&optional k) ;; ___/
   (corner-last 'CTAV-0) (<- ro)
-  (cwng-z fd)
+  (lower-serif-radius fd)
   (block-radius-height ro fd) 
   (-> ro)
-  (cida-ctrok ro tcl)
+  (block-radius-length ro tcl)
   (^ ro2) 
-  (cwng-z fd)
+  (lower-serif-radius fd)
   (corner-ctav) 
   (save-point 'CTAV-END))
 

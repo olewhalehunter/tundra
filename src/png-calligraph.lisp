@@ -1,5 +1,8 @@
 ;; PNG Typeset Functions
 ;;
+;; see (PNG-DRAW-CHAT ...) call at end of file
+;; ~/ sbcl
+;; (load "png-calligraph.lisp") => "out.png"
 
 "Geometry functions for PNG Typesetting and Calligraphy with Lisp"
 
@@ -179,7 +182,7 @@
 			    :color-type :truecolor-alpha
 			    :width width
 			    :height height )))    
-    (with-open-file (stream file :direction :output
+    (with-open-file (stream filename :direction :output
 			    :if-exists :supersede
 			    :if-does-not-exist :create
 			    :element-type '(unsigned-byte 8))
