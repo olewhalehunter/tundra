@@ -14,3 +14,4 @@ digital arts tooling
 * install SBCL and quicklisp
 * (load "src/png-calligraph") -> "out.png" calligraph texture 
 * (load "src/server.lisp") -> start server/client studio
+* then open "localhost:8082/repl" in browser for development
