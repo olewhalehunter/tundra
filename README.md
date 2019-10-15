@@ -1,6 +1,6 @@
 # tundra
 
-AM Dev Site repository and digital arts tooling.
+digital arts tooling.
 
 * TD demo render
 * design and capture images upload to /portfolio
