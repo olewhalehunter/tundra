@@ -11,7 +11,7 @@
 ;;;; Layout
 ;;
 
-(defun dist (x0 y0 x1 y1)
+(defun distance (x0 y0 x1 y1)
   (sqrt (+ (expt (- x1 x0) 2)
 	   (expt (- y1 y0) 2))))
 
@@ -48,7 +48,7 @@
 
 
 
-;;;; StrokeDrafting Tool
+;;;; Stroke Drafting Tool
 ;;
 
 ;; Top Left Corners of Meter
@@ -75,36 +75,36 @@
 (defun v (y) (setq corner-y (+ corner-y y)))
 (defun ^ (y) (setq corner-y (- corner-y y)))
 
-(defun t-cwng (r h)
+(defun block-radius-height (r h)
   (loop for x from corner-x to (+ corner-x r) do
        (loop for y from corner-y to (+ corner-y h) do
 	    (white y x))))
 
-(defun cwng-flodu (r)
+(defun flood-serif-radius (r)
   (loop for x from corner-x to (+ corner-x r) do
        (loop for y from corner-y to (+ corner-y r) do
-	    (if (> (dist corner-x (+ corner-y r) x y) r)
+	    (if (> (distance corner-x (+ corner-y r) x y) r)
 		(white y x) )))
   (setq corner-x (+ corner-x r)))
 
-(defun ctav-ctrok (r h left)
+(defun block-height (r h left)
   (loop for x from corner-x to (+ corner-x r) do
        (loop for y from corner-y to (+ corner-y h) do
 	    (white y x)))
   (setq corner-x (if (eq left :right) (+ corner-x r) corner-x)
 	corner-y (+ corner-y h)))
 
-(defun cida-ctrok (r l)
+(defun block-radius-length (r l)
   (loop for x from corner-x to (+ corner-x l) do
        (loop for y from corner-y to (+ corner-y r) do
 	    (white y x)))
   (setq corner-x (+ corner-x l)		     
 	corner-y (+ corner-y r)))
 
-(defun cwng-z (r)
+(defun lower-serif-radius (r)
   (loop for x from corner-x downto (- corner-x r) do
        (loop for y from corner-y to (+ corner-y r) do
-	    (if (> (dist (- corner-x r) corner-y x y) r)
+	    (if (> (distance (- corner-x r) corner-y x y) r)
 		(white y x) ))))
 
 
@@ -132,6 +132,8 @@
       tcl (floor (* 1.0 tc)))
 
 (setq cur-ctav-h ctav-h)
+
+
 
 (defun ctav-next ()
   (setq corner-y (+ corner-y ctav-h tc)
@@ -171,17 +173,18 @@
 	     png))))
        
 
-(defun draw-png-file (file w h)
+(defun draw-png-file (filename width height)
+"with current pixels in buffers, draw to FILENAME of WIDTH and HEIGHT"
   (let ((png (make-instance 'pixel-streamed-png
 			    :color-type :truecolor-alpha
-			    :width w
-			    :height h )))    
+			    :width width
+			    :height height )))    
     (with-open-file (stream file :direction :output
 			    :if-exists :supersede
 			    :if-does-not-exist :create
 			    :element-type '(unsigned-byte 8))
       (start-png png stream)      
-      (paint-pixels-mem! png w h)            
+      (paint-pixels-mem! png width height)
       (finish-png png)))
   (print "Portable Network Graphic drawn."))
 

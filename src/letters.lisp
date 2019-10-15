@@ -49,30 +49,33 @@
   (save-point 'CTAV-END))
 
 (defun c0 () ;; |   
-  (cwng-flodu fd)
+  (flood-serif-radius fd)
   (save-point 'CWNG-0)
-  (ctav-ctrok ro tc :right)  
+  (block-height ro tc :right)  
   (save-point 'CTAV-0))
 
 (defun c1 () ;; ---\
   (corner-last 'CWNG-0)
-  (cida-ctrok ro tc)
+  (block-radius-length ro tc)
   (^ ro)
-  (t-cwng fd ro) (V ro) (cwng-flodu fd)
+  (block-radius-height fd ro) (V ro) (flood-serif-radius fd)
   (save-point 'CTAV-1))
 
 (defun c2 (&optional k) ;; ___/
   (corner-last 'CTAV-0) (<- ro)
   (cwng-z fd)
-  (t-cwng ro fd) (-> ro)
+  (block-radius-height ro fd) 
+  (-> ro)
   (cida-ctrok ro tcl)
-  (^ ro2) (cwng-z fd)
-  (corner-ctav) (save-point 'CTAV-END))
+  (^ ro2) 
+  (cwng-z fd)
+  (corner-ctav) 
+  (save-point 'CTAV-END))
 
 (defun c5 () ;; \|
   (corner-last 'CTAV-0) (<- ro)
-  (cwng-z fd)
-  (t-cwng ro fd) (-> ro)  
+  (lower-serif-radius fd)
+  (block-radius-height ro fd) (-> ro)  
   (corner-ctav) (save-point 'CTAV-END))
 
 
@@ -80,13 +83,13 @@
 (defun cf ()
   (corner-last 'CWNG-0)
   (-> ft)
-  (ctav-ctrok r tc :right)
+  (block-height r tc :right)
   (save-point 'CF))
 
 (defun ca () "thin right side"
   (corner-last 'CWNG-0)
   (-> (+ tc ro))  
-  (ctav-ctrok r (+ tc ro) :right)  
+  (block-height r (+ tc ro) :right)  
   (save-point 'CTAV-END))
 
 
@@ -94,13 +97,13 @@
 (defun ce () "thwartline A"
   (corner-last 'CWNG-0)
   (V (+ (floor (- tc (* fd 2))) ro))
-  (ctav-ctrok (+ ro tc) r :left)  
+  (block-height (+ ro tc) r :left)  
   (save-point 'CTAV-END))
 
 (defun cb () "thwartline B, E"
   (corner-last 'CWNG-0)
   (V (+ (floor (/ tc 2.0)) (floor (/ fd 2.0))))  
-  (ctav-ctrok (+ ro tc) r :left)  
+  (block-height (+ ro tc) r :left)  
   (save-point 'CTAV-END))
 
 (defun ctrok-l ()
@@ -160,13 +163,13 @@
   (c0) (c5)
   (corner-last 'CWNG-0)
   (v thalf) (-> fd)  
-  (cwng-flodu (* fd 2))
+  (flood-serif-radius (* fd 2))
   (loop for y from (+ (* fd 2) corner-y)
      to (+ corner-y fd thalf)
      do (gro y corner-x))
 
   (^ thalf)
-  (cwng-z (* 2 fd))  
+  (lower-serif-radius (* 2 fd))  
   (save-point 'CTAV-END))
 
 (defun ctrok-d ()
