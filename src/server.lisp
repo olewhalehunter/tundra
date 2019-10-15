@@ -1,14 +1,8 @@
-;;amdev.lisp
-;;20191010Z
-;;jpt4
-;;SBCL
-;;AM dev site
+;; server.lisp
+;; jpt4 and olewhalehunter
+;; SBCL
+;; Tundra digital arts development server
 
-;TODO: How to direct ql to the correct library for ("/usr/lib/libssl.so.1.1")
-;and ("/usr/lib/libcrypto.so.1.1"). 
-;How to execute/repair from current
-;buffer, rather than in repl?
-;A: sl-ev-b, enter alternative library paths.
 (ql:quickload '(:hunchentoot :cl-who :parenscript :smackjack))
 
 (defpackage :test-site
