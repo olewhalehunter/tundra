@@ -10,7 +10,7 @@ var slabString = "";
 
 function newSlab(file, textureName){
   console.log('Defining slabs for texture var ' + textureName);
-  // 'imgs/bark.jpg', 'barkTexture'  
+  // 'bark.jpg', 'barkTexture'  
   slabFile = file; 
   slabTexture = textureName; 
   var s = slab(
@@ -29,10 +29,10 @@ function newSlab(file, textureName){
 }
 
 function barkSlab () {
-  newSlab('imgs/bark.jpg', 'barkTexture'); }
+  newSlab('bark.jpg', 'barkTexture'); }
 
 function shadeSlab () {
-  newSlab('imgs/shade.jpg', 'shadeTexture'); }
+  newSlab('shade.jpg', 'shadeTexture'); }
 
 function formatCoords (x) { 
   var out = '[';
@@ -82,7 +82,7 @@ function addSlab (x) {
 
 var pointSamp = [3, 5, 4];
 
-dyn = slab("imgs/ink.jpeg",
+dyn = slab("ink.jpeg",
           // stoneTexture vars declared in /tundra-client.js
 	  "inkTexture",           
 	  [[3, 0, -20],
@@ -91,14 +91,14 @@ dyn = slab("imgs/ink.jpeg",
 	   [70 , 0, 8]]);
 
 stones =
-    [slab("imgs/bark.jpg",
+    [slab("bark.jpg",
 	  "barkTexture",
 	  [[-4, 0, -40],
 	   [-4, 0, 40],
 	   [70, 0, +40],
 	   [70 , 0, -40]])
      ,
-     slab("imgs/bark.jpg",
+     slab("bark.jpg",
 	  "barkTexture",
 	  [[-4, 38, -40],
 	   [-4, 80, 40],

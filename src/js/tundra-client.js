@@ -5,6 +5,7 @@ var tipDown = false;
 var tipMoving = false;
 var windowWidth = window.innerWidth;
 var windowHeight = window.innerHeight;
+var guideToggled = true;
 
 document.onmousemove = onTipMove;
 document.onmousedown = onTipDown;
@@ -146,6 +147,10 @@ function TundraMain () {
 		      createFlattenedVertices(gl, loadVertices(stones[i].coords)),
 		      ctrokUniforms,
 		      gl, viewProjectionMatrix); }
+
+	if (guideToggled){
+	    drawPlaneGuide();
+	    }
 		  
 	requestAnimationFrame(drawscene);
     }
@@ -172,4 +177,16 @@ function drawCtrok (textureRef,
     gl.drawArrays(gl.TRIANGLES, 0, ctrokBufferInfo.numElements);
 }
 
-TundraMain();
+function drawPlaneGuide () {            
+    var vertices = [
+            0.0 , 0.0 , 0.0,
+            -40.0,  0.0, 0.0,            
+    ]
+    var vertex_buffer = gl.createBuffer();         
+    gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer);              
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);        
+    gl.bindBuffer(gl.ARRAY_BUFFER, null);
+    // gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);         
+    //gl.clearColor(0, 1.0, 1.0, 1.0);
+    gl.drawArrays(gl.LINES, 0, 2);
+}

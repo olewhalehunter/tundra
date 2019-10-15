@@ -2,10 +2,9 @@
 
 digital arts tooling
 
-* toggle see coord plane
+* 4 x 2 x 2 x 2 cross guide coord plane
+** for loop draw guide ctrok <- see stone texture draw area
 * tree newSlab() manual entry, slabStr
-* demo render
-* design and capture images upload to /portfolio
 * better src documentation
 
 # Install and Run

@@ -5,8 +5,8 @@ var gl;
 var canvas;
 
 function glcanvassetup (){
-    canvas = document.getElementById("canvas");
-    gl = canvas.getContext("webgl");
+    canvas = document.getElementById('canvas');
+    gl = canvas.getContext('webgl');
     if (!gl) {	
 	return;
     }
