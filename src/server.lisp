@@ -26,8 +26,8 @@
 	     :rel "stylesheet"
 	     :href "/tundra.css"))     
 
-     (str (generate-prologue *ajax-processor*))
-     (:script :type "text/css" :source "css/tundra.css")
+     (str (generate-prologue *ajax-processor*))     
+
      (:script :type "text/javascript"
 	      (str
 	       (ps
@@ -38,7 +38,10 @@
 						 (get-element-by-id "data")
 						 value)
 					  callback)))))))
+
     (:body
+     (:div :id "frame-outside"
+      "[]")
      (:p
       (:input :id "data" :type "text"))
      (:p
